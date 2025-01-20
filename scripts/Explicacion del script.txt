@@ -1,0 +1,74 @@
+Dependencias Necesarias
+
+    Paquete smbclient:
+        Este es el principal para ejecutar comandos SMB en Linux.
+        Instálalo con:
+
+    apt update
+    apt install smbclient -y
+
+Paquete cifs-utils (opcional, pero recomendado):
+
+    Aunque no lo usamos directamente en el script, puede ser útil para diagnósticos o si decides usar mount.cifs en el futuro.
+    Instálalo con:
+
+    apt install cifs-utils -y
+
+Directorios y permisos:
+
+    Asegúrate de que el directorio local definido en LOCAL_PATH exista y tenga los permisos adecuados para que el script pueda escribir en él:
+
+    mkdir -p /var/www/metunas.co.cu/logs/
+    chown -R www-data:www-data /var/www/metunas.co.cu/logs/
+    chmod -R 755 /var/www/metunas.co.cu/logs/
+
+Credenciales SMB válidas:
+
+    Verifica que las credenciales que estás utilizando (usuario, contraseña y dominio) sean correctas y tengan permisos de lectura en la carpeta compartida.
+
+Acceso a red:
+
+    El servidor Debian debe poder alcanzar el servidor Windows por su nombre de host o dirección IP (DATASERVER) y tener conectividad con el puerto SMB (445/TCP).
+    Prueba la conectividad con:
+
+        ping DATASERVER
+        telnet DATASERVER 445
+
+Verificación Post-Instalación
+
+    Prueba manual de conexión con smbclient: Antes de ejecutar el script, confirma que puedes acceder manualmente:
+
+smbclient //DATASERVER/Logs -U metunas.co.cu\\administrator
+
+Ingresa la contraseña y verifica que puedas listar los archivos con ls.
+
+Versión de SMB soportada:
+
+    Si el servidor Windows usa una versión específica de SMB (por ejemplo, SMB3), puedes forzarlo en el comando añadiendo -m SMB3:
+
+smbclient //DATASERVER/Logs -U metunas.co.cu\\administrator -m SMB3
+
+
+#
+#
+#
+
+Explicación del Script
+
+    Variables de configuración:
+        SMB_SERVER: Define la carpeta compartida del servidor.
+        SMB_USER y SMB_PASSWORD: Credenciales para acceder al servidor.
+        LOCAL_PATH: Carpeta en tu servidor Debian donde se guardarán los archivos.
+        REMOTE_PATH: Archivos específicos a descargar, en este caso, todos los CSV.
+
+    Chequeo del directorio local:
+    Si la carpeta local no existe, se crea automáticamente.
+
+    Conexión y descarga:
+    Usamos smbclient para:
+        Cambiar el directorio local con lcd.
+        Navegar en el recurso compartido con cd Logs.
+        Descargar los archivos CSV con mget.
+
+    Verificación de la operación:
+    Comprueba si smbclient devolvió un estado de éxito ($? -eq 0).

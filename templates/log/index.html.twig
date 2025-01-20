@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logs de Auditoría{% endblock %}
+
+{% block body %}
+<h1>Logs de Auditoría</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Acción</th>
+            <th>Archivo</th>
+            <th>Compartido</th>
+            <th>Path</th>
+            <th>IP Cliente</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.fecha|date('Y-m-d H:i:s') }}</td>
+            <td>{{ log.usuario }}</td>
+            <td>{{ log.accion }}</td>
+            <td>{{ log.archivo }}</td>
+            <td>{{ log.compartido }}</td>
+            <td>{{ log.path }}</td>
+            <td>{{ log.ipCliente }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="7">No hay registros disponibles.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    {{ pagerfanta(logs) }}
+</div>
+{% endblock %}
