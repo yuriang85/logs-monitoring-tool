@@ -7,11 +7,12 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 // Importar estilos (CSS o SCSS)
-import './styles/app.scss';
+//import './styles/app.scss';
+import './styles/app.css';
 
 // Si usas Bootstrap
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Tu código JavaScript aquí
+// Tu cï¿½digo JavaScript aquï¿½
 console.log('Webpack Encore configurado correctamente');

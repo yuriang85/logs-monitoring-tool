@@ -21,7 +21,10 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-
+    //AdminLTE 4 Plantilla
+    .addStyleEntry('adminlte', './node_modules/admin-lte/dist/css/adminlte.min.css')
+    .addEntry('adminlte_js', './node_modules/admin-lte/dist/js/adminlte.min.js')
+    
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
@@ -38,7 +41,7 @@ Encore
      */
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
+    //.enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
@@ -55,7 +58,7 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
-
+    .enablePostCssLoader()
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 

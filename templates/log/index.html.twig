@@ -5,8 +5,8 @@
 {% block body %}
 <h1>Logs de Auditoría</h1>
 
-<table>
-    <thead>
+<table class="table table-hover table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
             <th>Fecha</th>
             <th>Usuario</th>
@@ -30,13 +30,14 @@
         </tr>
         {% else %}
         <tr>
-            <td colspan="7">No hay registros disponibles.</td>
+            <td colspan="7" class="text-center">No hay registros disponibles.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<div class="pagination">
-    {{ pagerfanta(logs) }}
+<div class="d-flex justify-content-center mt-3">
+    {{ pagerfanta(logs, 'twitter_bootstrap5', { 'prev_message': '«', 'next_message': '»', 'class': 'pagination' }) }}
 </div>
+
 {% endblock %}

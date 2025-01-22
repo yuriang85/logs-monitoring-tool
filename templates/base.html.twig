@@ -7,7 +7,7 @@
         
         {# Bloque para incluir los estilos generados por Webpack Encore #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('adminlte') }}
         {% endblock %}
     </head>
     <body>
@@ -15,7 +15,7 @@
         
         {# Bloque para incluir los scripts generados por Webpack Encore #}
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('adminlte_js') }}
         {% endblock %}
     </body>
 </html>
