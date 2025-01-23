@@ -5,6 +5,27 @@
 {% block body %}
 <h1>Logs de Auditoría</h1>
 
+<form method="get" class="mb-4">
+    <div class="row g-2">
+        <div class="col-md-3">
+            <input type="text" name="usuario" class="form-control" placeholder="Usuario" value="{{ app.request.query.get('usuario') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="accion" class="form-control" placeholder="Acción" value="{{ app.request.query.get('accion') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="date" name="fecha_desde" class="form-control" placeholder="Fecha Desde" value="{{ app.request.query.get('fecha_desde') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="date" name="fecha_hasta" class="form-control" placeholder="Fecha Hasta" value="{{ app.request.query.get('fecha_hasta') }}">
+        </div>
+    </div>
+    <div class="mt-2">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <a href="{{ path('log_list') }}" class="btn btn-secondary">Limpiar Filtros</a>
+    </div>
+</form>
+
 <table class="table table-hover table-bordered table-striped">
     <thead class="table-dark">
         <tr>
@@ -37,7 +58,7 @@
 </table>
 
 <div class="d-flex justify-content-center mt-3">
-    {{ pagerfanta(logs, 'twitter_bootstrap5', { 'prev_message': '«', 'next_message': '»', 'class': 'pagination' }) }}
+    {{ pagerfanta(logs, 'twitter_bootstrap5', { 'prev_message': '«', 'next_message': '»', 'proximity': 3 }) }}
 </div>
 
 {% endblock %}

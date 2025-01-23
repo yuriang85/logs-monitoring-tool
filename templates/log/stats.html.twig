@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Estadísticas de Logs{% endblock %}
+
+{% block body %}
+<h1>Estadísticas de Logs</h1>
+
+<h2>Acciones por Usuario</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Total de Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in actionsByUsuario %}
+        <tr>
+            <td>{{ data.usuario }}</td>
+            <td>{{ data.total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Acciones por Tipo</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Acción</th>
+            <th>Total de Veces</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in actionsByAccion %}
+        <tr>
+            <td>{{ data.accion }}</td>
+            <td>{{ data.total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

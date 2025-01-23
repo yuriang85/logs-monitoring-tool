@@ -16,6 +16,29 @@ class LogRepository extends ServiceEntityRepository
         parent::__construct($registry, Log::class);
     }
 
+    // src/Repository/LogRepository.php
+
+    public function countActionsByUsuario()
+    {
+        return $this->createQueryBuilder('l')
+            ->select('l.Usuario as usuario, COUNT(l.id) as total')
+            ->groupBy('l.Usuario')
+            ->orderBy('total', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function countActionsByAccion()
+    {
+        return $this->createQueryBuilder('l')
+            ->select('l.Accion as accion, COUNT(l.id) as total')
+            ->groupBy('l.Accion')
+            ->orderBy('total', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     //    /**
     //     * @return Log[] Returns an array of Log objects
     //     */

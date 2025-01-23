@@ -7,6 +7,10 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 // Importar estilos (CSS o SCSS)
+
+// assets/app.js
+import 'admin-lte/dist/js/adminlte';
+
 //import './styles/app.scss';
 import './styles/app.css';
 
