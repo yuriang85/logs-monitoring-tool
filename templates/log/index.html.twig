@@ -1,8 +1,9 @@
+{# templates/log/index.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Logs de Auditoría{% endblock %}
 
-{% block body %}
+{% block content %}
 <h1>Logs de Auditoría</h1>
 
 <form method="get" class="mb-4">
@@ -60,5 +61,6 @@
 <div class="d-flex justify-content-center mt-3">
     {{ pagerfanta(logs, 'twitter_bootstrap5', { 'prev_message': '«', 'next_message': '»', 'proximity': 3 }) }}
 </div>
+
 
 {% endblock %}
