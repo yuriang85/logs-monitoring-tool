@@ -20,6 +20,12 @@ Encore
         config.corejs = '3.38';
     })
     .enableSassLoader()
-    .autoProvidejQuery();
+    .autoProvidejQuery()
+    /* Copiar imagenes a public/ con webpack encore*/
+    .copyFiles({
+        from: './node_modules/admin-lte/dist/assets/img',
+        to: 'images/[path][name].[ext]'
+    })
+    ;
 
 module.exports = Encore.getWebpackConfig();

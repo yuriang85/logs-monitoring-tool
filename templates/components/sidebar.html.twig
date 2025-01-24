@@ -1,0 +1,30 @@
+<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+  <div class="sidebar-brand">
+    <a href="{{ path('app_dashboard') }}" class="brand-link">
+      <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image">
+      <span class="brand-text">AdminLTE 4</span>
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <nav>
+      <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview">
+        <li class="nav-item">
+          <a href="{{ path('app_dashboard') }}" class="nav-link active">
+            <i class="bi bi-speedometer"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href=""> 
+            <i class="nav-icon bi bi-circle"></i> 
+              <p><font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Panel de control v1</font></font>
+              </p>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+</aside>
