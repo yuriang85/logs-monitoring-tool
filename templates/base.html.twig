@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}AdminLTE Dashboard{% endblock %}</title>
-    <!-- Fonts -->
+    <!-- Fonts and Styles -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
       crossorigin="anonymous"
     >
-    <!-- Styles -->
     {% block stylesheets %}
       {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -19,23 +18,17 @@
     <div class="app-wrapper">
       <!-- Header -->
       {% include 'components/header.html.twig' %}
-      
       <!-- Sidebar -->
       {% include 'components/sidebar.html.twig' %}
-      
-      <!-- Main -->
+      <!-- Main Content -->
       <main class="app-main">
         <div class="container-fluid">
-          {% block content %}
-          <!-- Page-specific content goes here -->
-          {% endblock %}
+          {% block content %}{% endblock %}
         </div>
       </main>
-
       <!-- Footer -->
       {% include 'components/footer.html.twig' %}
     </div>
-    <!-- Scripts -->
     {% block javascripts %}
       {{ encore_entry_script_tags('app') }}
     {% endblock %}
